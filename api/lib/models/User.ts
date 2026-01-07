@@ -2,15 +2,15 @@ import {DataTypes, Model} from "sequelize"
 import sequelize from "sequelize"
 
 class User extends Model {
-    declare id: string,
-    declare email: string,
-    declare password: string
+    declare id: string;
+    declare email: string;
+    declare password: string;
 }
 
-User.init (
-{
+User.init(
+    {
         id:{
-            type: Datatypes.UUID,
+            type: DataTypes.UUID,
             defaultValue: DataTypes.UUIDV4,
             primaryKey: true,
         },
@@ -23,10 +23,10 @@ User.init (
             type: DataTypes.STRING,
             allowNull: false
         },
-    }
+    },
     {
-        sequlize,
-        tableName: 'users'
+        sequelize,
+        tableName: 'users',
         timestamps: true,
     }
 )

@@ -1,4 +1,4 @@
-import {Sequelize} from sequelize;
+import {Sequelize} from "sequelize";
 
 const sequelize = new Sequelize(
     process.env.DB_NAME as string,
@@ -6,7 +6,7 @@ const sequelize = new Sequelize(
     process.env.DB_PASS as string,
     {
         host: process.env.DB_HOST,
-        dailect: "mysql"
+        dailect: "mysql",
         logging: false,
     }
 )
