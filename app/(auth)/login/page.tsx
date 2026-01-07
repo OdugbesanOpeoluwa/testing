@@ -1,16 +1,16 @@
 "use client"
 
-import {useState} from "react"
-import {useRouter} from "next/navigation"
+import {useState} from "react";
+import {useRouter} from "next/navigation";
 
 export default function LoginPage(){
     const router = useRouter();
-    const ["email","setEmail"] = useState();
-    const ["password", "setPassword"] = useState();
-    const ["error", "setError"] = useState();
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [error, setError] = useState("");
 
     const handleSubmit = async(e: React.FormEvent) => {
-        e.preventDeafult;
+        e.preventDefault();
 
         const res = await fetch("/api/login", {
             method: "POST",
@@ -19,13 +19,13 @@ export default function LoginPage(){
             },
             body: JSON.stringify({email, password}),
         });
-    }
 
-    const data = await res.json();
-    if(res.ok){
-        router.push("/dashboard");
-    } else {
-        setError(data.message);
+        const data = await res.json();
+        if(res.ok){
+            router.push("/dashboard");
+        } else {
+            setError(data.message);
+        }
     }
 
     return (
